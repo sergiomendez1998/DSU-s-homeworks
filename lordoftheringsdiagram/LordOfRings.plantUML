@@ -1,0 +1,41 @@
+@startuml UML
+class Character
+Class Beast
+Class Heroe
+Class Attack
+
+Class LordOfRings
+Class Life
+Class ArmourLevel
+Class Util
+Class Elves
+Class Humans
+Class Hobbit
+Class Goblin
+Class Battalion
+Class Turn
+
+LordOfRings *-down-"2" Battalion
+LordOfRings *-right- Turn
+
+Character <|-down-> Beast
+Character <|-down-> Heroe
+
+Beast<|-down-> Orcos
+Beast<|-down-> Goblin
+
+Heroe <|-down-> Elves
+Heroe <|-down-> Humans
+Heroe <|-down-> Hobbit
+
+Character *-down-> Life
+Character *-down-> ArmourLevel
+Character *-down-> Name
+Character ..>Util
+Character..> Attack
+Battalion -up> Kill
+Battalion *-left-"5" Character
+Turn -left> Battalion
+Turn..> Util
+
+@enduml

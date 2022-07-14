@@ -1,0 +1,108 @@
+@startuml
+' -			private
+' #			protected
+' ~			package private
+' +         public
+'https://plantuml.com/class-diagram
+package "LORD OF THE RING GAME" {
+Class Turn{
+-BATTALION_SIZE
++init()
++Character[] heroesBattalion
++Character[] beastBattalion
++isAlive() boolean
++ShowStatistic()
++getWinner()
+}
+Class LordOfTheRing{
++play()
+}
+
+class Battalion{
+'+Heroe[] heroeTeam
++Character[] Characters
++Util util
++init()
++fight()
++eliminate()
+}
+package "Characters" {
+
+abstract Character{
++Character character
+-life
+-name
+-armour
++getAlterAttack() boolean
++getAlterDefense() boolean
++getDiceTimes()
++attack()
++isAlive() boolean
++defend()
+}
+
+abstract Beast{
++attack()
++isAlive() boolean
++defend()
+}
+
+abstract Heroe{
++attack()
++isAlive() boolean
+defend()
+}
+
+package "Heroes" {
+Class Hobbit{
++attack()
++getAlterAttack()
+}
+Class Elves{
++attack()
++getAlterAttack()
+
+}
+Class Human{
++attack()
+
+}
+}
+
+package "Beasts" {
+Class Orc{
++attack()
+}
+class Goblin{
++attack()
+
+}
+}
+}
+
+package "util" {
+Class Util{
++generateRandomNumber() boolean
++diceHighestNumber
+}
+
+LordOfTheRing*--"2"Battalion
+Character..>Util
+
+Heroe<|--Hobbit
+Heroe<|--Elves
+Heroe<|--Human
+
+Beast<|--Orc
+Beast<|--Goblin
+
+Battalion*--"5"Character
+Battalion..>Util
+Turn..>Util
+Character<|--Heroe
+Character<|--Beast
+LordOfTheRing*--Turn
+Battalion<-Turn
+}
+}
+@enduml
